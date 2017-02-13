@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Sign Up</title>
+        <f:facet name="middle">
+            <h:outputStylesheet library="css" name="bootstrap.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <h:outputScript library="js" name="bootstrap.js" />
+        </f:facet>
+    </h:head>
+   <h:body>
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="/">Twitter</a>
+                </div>
+            <ul class="nav navbar-nav">
+               <!-- <li ><h:link outcome="MyTweets.xhtml">My Tweets</h:link></li>
+                <li ><h:link outcome="search.xhtml">Search</h:link></li>  -->
+                <li class="active"><h:link outcome="Register.xhtml">Register</h:link></li>
+                <li><h:link outcome="index.xhtml">Login</h:link></li>
+            </ul>
+        </div>
+        </nav>
+       
+        <div class="container">
+        <h:form>
+            <div class="row">
+            <div class="col-md-2"><p> Register </p></div>
+            </div>
+            
+            <div class="row">
+            <div class="col-md-2"><h:outputLabel for="txtLoginId" value="Enter your LoginId*" ></h:outputLabel></div>
+            <div class="col-md-4"> <h:inputText id="txtLoginId" value="#{register.loginId}"></h:inputText></div>
+            </div>
+            
+            <div class="row">
+            <div class="col-md-2"> <h:outputLabel for="txtName" value="Enter your Name*" ></h:outputLabel></div>
+            <div class="col-md-4"><h:inputText id="txtName" value="#{register.name}"></h:inputText></div> 
+            </div>
+       
+            <div class="row">
+            <div class="col-md-2"> <h:outputLabel for="txtPassword" value="Enter your Password*" ></h:outputLabel></div>
+            <div class="col-md-4"> <h:inputText id="txtPassword" value="#{register.password}"></h:inputText></div>
+            </div>
+            
+            <div class="row">
+            <div class="col-md-2"><p> Security Question 1 *</p> </div>
+            <div class="col-md-4">
+            <h:selectOneMenu value="#{register.security_Q_1}">
+                <f:selectItem itemValue="Fathers Middle Name" itemLabel="Fathers Middle Name" />
+                <f:selectItem itemValue="Mothers Maiden Name" itemLabel="Mothers Maiden Name" />	
+                <f:selectItem itemValue="City you born" itemLabel="City you born" />
+                <f:selectItem itemValue="Favorite Sport" itemLabel="Favorite Sport" />	   							
+            </h:selectOneMenu>
+            <h:inputText id="txtA1" value="#{register.answer1}"></h:inputText>    
+            </div>
+            </div>
+            
+            
+            <div class="row">
+            <div class="col-md-2"><h:outputLabel for="txtProfilePic" value="Upload Your Profile Picture" ></h:outputLabel></div>
+            <div class="col-md-4"><h:inputText id="txtProfilePic" value="#{register.profilePic}"></h:inputText></div>
+            </div>
+              
+            <div class="row">
+            <div class="col-md-2"><h:outputLabel for="txtCoverPic" value="Upload Your Cover Picture" ></h:outputLabel></div>
+            <div class="col-md-4"><h:inputText id="txtCoverPic" value="#{register.coverPic}"></h:inputText></div>
+            </div>
+            
+            
+            <div class="row">
+            <div class="col-md-2"><h:outputLabel for="txtDoB" value="DoB(MM//DD//YYYY)*" ></h:outputLabel></div>
+            <div class="col-md-4"><h:inputText id="txtDoB" value="#{register.doB}"></h:inputText></div>
+            </div>
+            
+            <div class="row">
+            <div class="col-md-2"><h:outputLabel for="txtaboutMe" value="About Me" ></h:outputLabel></div>
+            <div class="col-md-4"><h:inputText id="txtaboutMe" value="#{register.aboutMe}"></h:inputText></div>
+            </div>
+            
+            <div class="row">
+            <div class="col-md-2"><h:outputLabel for="txtLocation" value="Location" ></h:outputLabel></div>
+            <div class="col-md-4"><h:inputText id="txtLocation" value="#{register.location}"></h:inputText></div>
+            </div>
+            
+            
+            <div class="row">
+            <div class="col-md-offset-3 col-md-4"><h:commandButton value="Sign Up" action="#{register.RegisterMethod()}" ></h:commandButton></div>
+            </div>
+            
+            <h:outputLabel  class="text-danger" value="#{register.error}" > </h:outputLabel>
+        </h:form>
+        </div>    
+        
+      
+            
+           
+    </h:body>
+    
+</html>
+

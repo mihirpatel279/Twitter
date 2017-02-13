@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Welcome</title>
+        <f:facet name="middle">
+            <h:outputStylesheet library="css" name="bootstrap.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <h:outputScript library="js" name="bootstrap.js" />
+        </f:facet>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#">Twitter</a>
+                </div>
+           
+            <ul class="nav navbar-nav">
+                <li class="active"><h:link outcome="Welcome.xhtml">My Profile</h:link></li>
+                <li><h:link outcome="MyTweets.xhtml">My Tweets</h:link></li>
+                <li><h:link outcome="search.xhtml">Search</h:link></li>
+                <li><h:link outcome="PasswordUpd.xhtml"> Change Password</h:link></li>
+                <li><h:link outcome="Followings.xhtml"> Following</h:link></li>
+                
+                <li><h:link class="btn btn-warning" outcome="Signout.xhtml">Sign Out</h:link></li>
+            </ul>
+        </div>
+        </nav>
+        
+        <!--<h:inputHidden  value="#{login.getCount()}"/>-->
+        <h:form>
+             
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"> <p class="text-success"> Welcome #{login.loginId} </p></div>
+                <div class="col-md-4">Followers #{login.followerCount}</div>
+                <div class="col-md-4">Following #{login.followingCount}</div>
+            </div>    
+        </div>    
+        
+        
+        <div class="container">
+            <div class="row"><p class="info">Please enter your tweet here</p></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h:inputText class="form-control input-lg" id="txtTweetDetails"  value="#{tweet.tweetDetails}"></h:inputText> 
+                </div>
+                <div class="col-md-6">
+                    <h:commandButton class="btn btn-info" value="Tweet" action="#{tweet.TweetMethod()}" ></h:commandButton>
+                </div>    
+            </div>    
+        </div>
+        
+            <div class="container">    
+        <div class="row"><p class="text-justify">List of tweets</p></div>    
+        </div>
+        
+        <div class="container">
+            <div class="row">
+        <p><h:outputLabel value="#{tweet.message}"  style="color:blue;"> </h:outputLabel></p>                
+            </div>
+        </div>
+
+        
+        <div class="container">
+        <h:dataTable class="table table-striped" value="#{tweet.TweetsListOthers()}" var="orders" >
+            <h:column>
+                <f:facet name="header">User</f:facet>
+                        #{orders.loginId}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Tweet</f:facet>
+                        #{orders.tweet}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Time</f:facet>
+                        #{orders.t_date}
+            </h:column>
+            <h:column>
+                <f:facet name="header">No of Times Tweeted</f:facet>
+                        #{orders.retweetCount}
+            </h:column> 
+            <h:column>
+                <f:facet name="header">Retweet</f:facet>
+                <h:commandButton value="Retweet" class="btn btn-default" action="#{tweet.Retweet(orders.loginId, orders.tweetId )}" ></h:commandButton>
+            </h:column>
+        </h:dataTable>
+        </div>
+        
+        </h:form>
+    </h:body>    
+</html>
+

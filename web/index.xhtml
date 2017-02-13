@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Twitter</title>
+        <f:facet name="middle">
+            <h:outputStylesheet library="css" name="bootstrap.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <h:outputScript library="js" name="bootstrap.js" />
+        </f:facet>
+    </h:head>
+    
+    <h:body>
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="/">Twitter</a>
+                </div>
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><h:link outcome="MyTweets.xhtml">My Tweets</h:link></li>
+                <li><h:link outcome="search.xhtml">Search</h:link></li>-->
+                <li><h:link outcome="Register.xhtml">Register</h:link></li>
+                <li class="active"><h:link outcome="Login.xhtml">Login</h:link></li>
+            </ul>
+        </div>
+        </nav>
+        
+        <div class="container">
+        <h:form>
+            <div class ="row">
+                <p>
+                <div class="col-md-3"><h:outputLabel for="txtLoginId" value="Login Id" ></h:outputLabel></div>
+                <div class="col-md-3"><h:inputText id="txtLoginId" class="form-control" value="#{login.loginId}" required="true" requiredMessage="The login ID field cannot be null"/></div>
+                </p>
+            </div>
+            <div class ="row">
+                <p>
+                <div class="col-md-3"><h:outputLabel for="txtPassword" value="Password" ></h:outputLabel></div>
+                <div class="col-md-3"><h:inputSecret id="txtPassword" class="form-control" value="#{login.password}" required="true" requiredMessage="The password field cannot be null"/></div>
+                </p>
+            </div>
+            <div class ="row">
+            <p>
+            <div class="col-md-6 col-md-offset-3"><h:commandButton class="btn btn-success" value="Go Twitter" action="#{login.loginMethod()}" /></div>
+            </p>
+            </div>   
+        
+         <h:outputLabel value="#{login.error}" style="color:blue;"> </h:outputLabel>
+        
+         <p class=""> Don't have an account Click Here</p>
+         <h:link class="glyphicon-link" outcome="Register.xhtml"> Register </h:link> &nbsp;&nbsp;
+         
+         </h:form>
+        </div>    
+    </h:body>
+</html>
+
+
+
